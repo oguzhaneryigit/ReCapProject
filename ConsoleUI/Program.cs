@@ -10,6 +10,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //manager ve database oluşturma
             CarManager carManager = new CarManager(new InMemoryCarDal());
             Listele(carManager);
 
