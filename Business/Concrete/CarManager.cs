@@ -3,20 +3,31 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
+        // business Data ve Entities ile çalışır
+        // iş kodları
+        // if else vs
+        // yetkisi var mı?
+
         ICarDal _carDal;
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
         }
+
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if (car.DailyPrice>=0&&car.Description.Length>=2)
+            {
+                _carDal.Add(car);
+            }
         }
 
         public void Delete(Car car)
@@ -24,19 +35,32 @@ namespace Business.Concrete
             _carDal.Delete(car);
         }
 
-        public List<Car> GetAll()
+        //public Car Get()
+        //{
+        //    return _carDal.Get();
+        //}
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            return _carDal.GetAll();
+            return _carDal.GetAll(filter);
         }
 
-        public List<Car> GetById(int Id)
+        public List<Car> GetCarsByBrandId(int Id)
         {
-            return _carDal.GetById(Id);
+            return _carDal.GetAll(c => c.BrandId == Id);
+        }
+
+        public List<Car> GetCarsByColorId(int Id)
+        {
+            return _carDal.GetAll(c => c.ColorId == Id);
         }
 
         public void Update(Car car)
         {
-            _carDal.Update(car);
+            if (car.DailyPrice >= 0 && car.Description.Length >= 2)
+            {
+                _carDal.Update(car);
+            }
         }
     }
 }
