@@ -23,7 +23,7 @@ namespace ConsoleUI
 
             carManager.Add(new Car() { Description = "nisan suv", BrandId = 4, ColorId = 3, DailyPrice = 15000, ModelYear = "2015" });
 
-            foreach (var item in carManager.GetCarDetails())
+            foreach (var item in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine("{0} {1} {2}  {3:0.00}$", item.Description, item.ColorName, item.BrandName, item.DailyPrice);
             }
@@ -52,7 +52,7 @@ namespace ConsoleUI
         }
         static void Listele(CarManager carManager)
         {
-            foreach (var item in carManager.GetAll())
+            foreach (var item in carManager.GetAll().Data)
             {
                 Console.WriteLine(item.Description);
             }
