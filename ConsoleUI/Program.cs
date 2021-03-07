@@ -13,8 +13,29 @@ namespace ConsoleUI
         {
             //InMemoryTest();
 
-            CarTest();
+            //CarTest();
+            //UserTest();
 
+            //CustomerTest();
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            Console.WriteLine(rentalManager.Add(new Rental { CarId = 2, CustomerId = 1, RentDate = DateTime.Now }).Message  ); 
+
+        }
+
+        private static void CustomerTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            customerManager.Add(new Customer { CompanyName = "sdfsdf", UserId = 1 });
+        }
+
+        private static void UserTest()
+        {
+            UserManager userManager = new UserManager(new EfUserDal());
+
+            userManager.Add(new User() { FirstName = "ozy", Email = default, LastName = default, Password = default });
+            userManager.Add(new User() { FirstName = "ali", Email = default, LastName = default, Password = default });
+            userManager.Add(new User() { FirstName = "çağrı", Email = default, LastName = default, Password = default });
+            userManager.Add(new User() { FirstName = "simal", Email = default, LastName = default, Password = default });
         }
 
         private static void CarTest()

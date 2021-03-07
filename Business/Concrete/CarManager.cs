@@ -29,11 +29,11 @@ namespace Business.Concrete
             if (car.DailyPrice>=0&&car.Description.Length>=2)
             {
                 _carDal.Add(car);
-                return new SuccessResult("ürün eklendi");
+                return new SuccessResult("araç eklendi");
             }
             else
             {
-                return new ErrorResult("ürün eklenemedi");
+                return new ErrorResult("araç eklenemedi");
             }
         }
         public IResult Delete(Car car)
@@ -41,11 +41,11 @@ namespace Business.Concrete
             if (true)
             {
                 _carDal.Delete(car);
-                return new SuccessResult("ürün silindi");
+                return new SuccessResult("araç silindi");
             }
             else
             {
-                return new ErrorResult("ürün silinemedi");
+                return new ErrorResult("araç silinemedi");
             }
         }
         public IResult Update(Car car)
@@ -53,11 +53,11 @@ namespace Business.Concrete
             if (car.DailyPrice >= 0 && car.Description.Length >= 2)
             {
                 _carDal.Update(car);
-                return new SuccessResult("ürün güncellendi");
+                return new SuccessResult("araç güncellendi");
             }
             else
             {
-                return new ErrorResult("ürün güncellenemedi");
+                return new ErrorResult("araç güncellenemedi");
             }
         }
         //
